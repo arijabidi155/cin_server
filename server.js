@@ -6,6 +6,10 @@ const app = express();
 app.use(express.json()); // To parse JSON payloads from Flutter
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+app.get('/api/ping', (req, res) => {
+    console.log("⚓ Ping reçu ! Le serveur reste éveillé.");
+    return res.status(200).send("OK");
+});
 
 app.post('/api/verify-cin', async (req, res) => {
     try {
